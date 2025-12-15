@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+// ✅ Import logo (Vite way)
+import aznakLogo from "../assets/images/aznak_logo.jpg";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -35,7 +38,7 @@ export default function Navbar() {
   };
 
   // Single button for Restricted1 page
-  const goToRestricted = () => navigate("/restricted1"); // points to Restricted1.jsx
+  const goToRestricted = () => navigate("/restricted1");
 
   return (
     <motion.nav
@@ -55,7 +58,7 @@ export default function Navbar() {
           onClick={() => handleClick({ id: "hero" })}
         >
           <img
-            src="/images/aznak_logo.jpg"
+            src={aznakLogo} // ✅ imported logo
             alt="Aznak Gym Logo"
             className="w-16 h-16 object-contain rounded-full"
           />
