@@ -4,6 +4,7 @@ import Pricing from "../components/Pricing";
 import Aboutus from "../components/Aboutus";
 import Map from "../components/Map";
 import Contact from "../components/Contact";
+import Contact from "../components/us1";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Services />
       <Pricing />
       <Aboutus />
+      <us1 />
       <Map />
       <Contact />
     </>
