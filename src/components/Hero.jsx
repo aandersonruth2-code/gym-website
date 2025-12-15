@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
+import herroImg from "../assets/images/herro.jpg";
+
 
 export default function HeroBackground() {
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ export default function HeroBackground() {
       id="hero"
       className="relative min-h-screen flex items-center text-white px-6 md:px-16 pt-32 pb-20 bg-cover bg-center"
       style={{
-        backgroundImage: "url('/images/herro.jpg')",
+        backgroundImage: `url(${herroImg})`,
       }}
     >
       {/* Dark overlay */}
