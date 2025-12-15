@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import gymImage from "../assets/images/gym-team.jpeg"; // replace with your image path
+import gymImage from "../assets/images/gym-team.jpeg"; // your image path
 import { FaCheck } from "react-icons/fa";
 
 export default function WhyTrainWithUs() {
@@ -19,16 +19,28 @@ export default function WhyTrainWithUs() {
   ];
 
   return (
-    <section className="bg-black text-white py-20 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section className="relative h-[80vh] flex items-center justify-center text-white py-20 px-6 md:px-16 overflow-hidden">
+      {/* Background Image */}
+      <motion.img
+        src={gymImage}
+        alt="Gym Team"
+        className="absolute inset-0 w-full h-full object-cover brightness-50"
+        initial={{ scale: 1.1 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      />
+
+      {/* Content Overlay */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center"
+      >
         {/* Left Column - Text */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="space-y-6"
-        >
+        <div className="space-y-6">
           <h2 className="text-4xl md:text-5xl font-extrabold">
             POURQUOI S’ENTRAÎNER <br /> CHEZ NOUS ?
           </h2>
@@ -55,25 +67,11 @@ export default function WhyTrainWithUs() {
             </ul>
           </div>
 
-          <p className="text-sm text-gray-400 mt-4">
+          <p className="text-sm text-gray-200 mt-4">
             (1) Élue marque préférée en France et en Espagne. Une communauté de plus de 700 000 adhérents
           </p>
-        </motion.div>
-
-        {/* Right Column - Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <img
-            src={gymImage}
-            alt="Gym Team"
-            className="w-full h-auto rounded-2xl shadow-2xl object-cover"
-          />
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
