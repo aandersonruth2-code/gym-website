@@ -1,66 +1,102 @@
 import { motion } from "framer-motion";
+import aboutImg from "../assets/images/FM1.jpg"; // change image if needed
 
-//  Import assets (Vite way)
-import fmImg from "../assets/images/FM.jpg";
-import fm1Img from "../assets/images/FM1.jpg";
-import vid2 from "../assets/images/vid2.mp4";
-
-export default function AboutUsSplit() {
+export default function Aboutus() {
   return (
-    <section id="about" className="bg-gray-900 text-white py-20 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12">
+    <section id="about" className="bg-black text-white py-20 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        {/* Text Left */}
+        {/* IMAGE */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="md:w-1/2 flex flex-col"
+          transition={{ duration: 1.4, ease: "easeOut" }}
+          className="relative"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-            À Propos de Nous
-          </h2>
-
-          <p className="text-gray-300 text-lg md:text-xl mb-6">
-            Notre gym est dédié à vous aider à atteindre vos objectifs fitness
-            grâce à des coachs expérimentés et des équipements modernes.
-            Rejoignez-nous pour transformer votre corps et votre esprit!
-          </p>
-
-          {/* Two Images Under Text */}
-          <div className="grid grid-cols-2 gap-4 mt-4">
-            <motion.img
-              whileHover={{ scale: 1.05 }}
-              src={fmImg}
-              alt="Gym equipment"
-              className="w-full h-40 object-cover rounded-lg shadow-lg"
-            />
-            <motion.img
-              whileHover={{ scale: 1.05 }}
-              src={fm1Img}
-              alt="Gym members training"
-              className="w-full h-40 object-cover rounded-lg shadow-lg"
-            />
-          </div>
+          <div className="absolute -top-6 -left-6 w-full h-full border-4 border-yellow-400 rounded-xl"></div>
+          <img
+            src={aboutImg}
+            alt="Gym Training"
+            className="relative rounded-xl shadow-2xl object-cover w-full h-[400px]"
+          />
         </motion.div>
 
-        {/* Video Right */}
+        {/* CONTENT */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="md:w-1/2 rounded-2xl overflow-hidden shadow-2xl flex justify-center"
+          transition={{ duration: 1.4, ease: "easeOut", delay: 0.2 }}
         >
-          <video
-            src={vid2}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-80 h-60 md:w-110 md:h-95 object-cover rounded-2xl"
-          />
+          <motion.h4
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="text-yellow-400 font-semibold tracking-widest uppercase mb-3"
+          >
+            About Our Gym
+          </motion.h4>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, delay: 0.4 }}
+            className="text-4xl md:text-5xl font-extrabold leading-tight mb-6"
+          >
+            Train Hard. <br />
+            <span className="text-yellow-400">Stay Strong.</span> <br />
+            Live Better.
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, delay: 0.6 }}
+            className="text-gray-300 mb-6 leading-relaxed"
+          >
+            Our gym is designed for those who want more than just workouts.
+            We offer professional equipment, expert trainers, and an
+            environment that pushes you to be your best every single day.
+          </motion.p>
+
+          {/* STATS */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.6, delay: 0.8 }}
+            className="grid grid-cols-3 gap-6 mb-8"
+          >
+            <div>
+              <h3 className="text-yellow-400 text-3xl font-bold">10+</h3>
+              <p className="text-gray-400 text-sm">Years Experience</p>
+            </div>
+            <div>
+              <h3 className="text-yellow-400 text-3xl font-bold">25+</h3>
+              <p className="text-gray-400 text-sm">Expert Trainers</p>
+            </div>
+            <div>
+              <h3 className="text-yellow-400 text-3xl font-bold">1k+</h3>
+              <p className="text-gray-400 text-sm">Happy Members</p>
+            </div>
+          </motion.div>
+
+          {/* BUTTON */}
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, delay: 1 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-4 rounded-full transition"
+          >
+            Join Our Gym
+          </motion.button>
         </motion.div>
 
       </div>

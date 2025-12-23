@@ -1,57 +1,95 @@
 import { motion } from "framer-motion";
 
+// Replace images with your real coach photos
+import coach1 from "../assets/images/FM.jpg";
+import coach2 from "../assets/images/FM.jpg";
+import coach3 from "../assets/images/FM.jpg";
+
 const coaches = [
   {
-    name: "John Smith",
+    name: "Ahmed Benali",
     role: "Strength Coach",
-    description: "Expert in weight training and bodybuilding, helping clients build strength and confidence.",
-    image: "/images/coach1.jpg",
+    image: coach1,
+    experience: "8+ Years Experience",
   },
   {
-    name: "Emily Johnson",
-    role: "Cardio & HIIT Coach",
-    description: "Specializes in cardio, HIIT, and endurance training to keep you in top shape.",
-    image: "/images/coach2.jpg",
+    name: "Sara El Amrani",
+    role: "Fitness Trainer",
+    image: coach2,
+    experience: "6+ Years Experience",
   },
   {
-    name: "Michael Lee",
-    role: "Flexibility & Yoga Coach",
-    description: "Focuses on flexibility, mobility, and recovery techniques for a balanced body.",
-    image: "/images/coach3.jpg",
+    name: "Youssef Ait Ali",
+    role: "Bodybuilding Coach",
+    image: coach3,
+    experience: "10+ Years Experience",
   },
 ];
 
 export default function Coaches() {
   return (
-    <div className="min-h-screen bg-black text-white pt-32 pb-20 px-6 md:px-12">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16">
-        Meet Our Coaches
-      </h1>
+    <section className="bg-black text-white py-24 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
 
-      <div className="grid gap-12 md:grid-cols-3">
-        {coaches.map((coach, i) => (
-          <motion.div
-            key={i}
-            className="bg-gray-900 rounded-2xl p-8 flex flex-col items-center text-center shadow-lg hover:shadow-2xl transition-shadow duration-300"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2 }}
-          >
-            {/* Square Image */}
-            <div className="w-44 h-44 mb-6 overflow-hidden border-4 border-yellow-400 rounded-lg">
-              <img
-                src={coach.image}
-                alt={coach.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
+        {/* TITLE */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4 }}
+          className="text-center mb-16"
+        >
+          <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
+            Our Coaches
+          </h4>
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            Meet Our <span className="text-yellow-400">Professional Team</span>
+          </h2>
+          <p className="text-gray-400 mt-4 max-w-xl mx-auto">
+            Certified trainers dedicated to helping you reach your fitness goals.
+          </p>
+        </motion.div>
 
-            <h2 className="text-2xl font-bold mb-2">{coach.name}</h2>
-            <p className="text-yellow-400 font-semibold mb-4">{coach.role}</p>
-            <p className="text-gray-300">{coach.description}</p>
-          </motion.div>
-        ))}
+        {/* COACHES GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+          {coaches.map((coach, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, delay: index * 0.2 }}
+              className="bg-zinc-900 rounded-2xl overflow-hidden border border-yellow-400/20 hover:border-yellow-400 transition"
+            >
+              {/* IMAGE */}
+              <div className="relative group">
+                <img
+                  src={coach.image}
+                  alt={coach.name}
+                  className="w-full h-[320px] object-cover grayscale group-hover:grayscale-0 transition duration-500"
+                />
+                <div className="absolute inset-0 bg-black/30"></div>
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold mb-1">
+                  {coach.name}
+                </h3>
+                <p className="text-yellow-400 font-semibold mb-2">
+                  {coach.role}
+                </p>
+                <p className="text-gray-400 text-sm">
+                  {coach.experience}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 }

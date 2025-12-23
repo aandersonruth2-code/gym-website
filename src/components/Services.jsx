@@ -1,60 +1,97 @@
 import { motion } from "framer-motion";
-import { Clock, MapPin, Phone } from "lucide-react";
 
-export default function GymInfoSection() {
+export default function GymSchedule() {
   return (
-    <section className="bg-black text-white py-20 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center justify-items-center">
-        
-        {/* Opening Hours */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="space-y-4"
-        >
-          <Clock className="w-12 h-12 text-yellow-500 mx-auto" />
-          <h3 className="text-2xl font-bold">Heures d’Ouverture</h3>
-          <div className="text-gray-300 leading-relaxed space-y-2">
-            <p className="font-semibold text-white">Hommes:</p>
-            <p>Lundi – Jeudi : 06:00 → 22:00</p>
-            <p className="font-semibold text-white mt-2">Femmes:</p>
-            <p>Vendredi – Dimanche : 08:00 → 20:00</p>
-          </div>
-        </motion.div>
+    <section className="bg-black text-white py-20 px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
 
-        {/* Location */}
+        {/* TITLE */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="space-y-4"
+          transition={{ duration: 1.4, ease: "easeOut" }}
+          className="text-center mb-14"
         >
-          <MapPin className="w-12 h-12 text-yellow-500 mx-auto" />
-          <h3 className="text-2xl font-bold">Localisation</h3>
-          <p className="text-gray-300 leading-relaxed">
-            Av. Mohamed VI, Tanger<br />
-            Maroc
+          <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
+            Gym Timing
+          </h4>
+          <h2 className="text-4xl md:text-5xl font-extrabold">
+            Opening <span className="text-yellow-400">Schedule</span>
+          </h2>
+          <p className="text-gray-400 mt-4 max-w-xl mx-auto">
+            Dedicated training days to ensure comfort and focus for everyone.
           </p>
         </motion.div>
 
-        {/* Contact */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          className="space-y-4"
-        >
-          <Phone className="w-12 h-12 text-yellow-500 mx-auto" />
-          <h3 className="text-2xl font-bold">Contact</h3>
-          <p className="text-gray-300 leading-relaxed">
-            +212 6 12 34 56 78<br />
-            contact@gymmorocco.ma
-          </p>
-        </motion.div>
+        {/* SCHEDULE CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          {/* MEN */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.2 }}
+            className="bg-zinc-900 border border-yellow-400/30 rounded-2xl p-8"
+          >
+            <h3 className="text-2xl font-bold mb-4 text-yellow-400">
+              Men Training
+            </h3>
+
+            <p className="text-gray-300 mb-6">4 Days Per Week</p>
+
+            <ul className="space-y-3 text-gray-400">
+              <li className="flex justify-between border-b border-gray-700 pb-2">
+                <span>Monday</span>
+                <span>6:00 AM – 10:00 PM</span>
+              </li>
+              <li className="flex justify-between border-b border-gray-700 pb-2">
+                <span>Tuesday</span>
+                <span>6:00 AM – 10:00 PM</span>
+              </li>
+              <li className="flex justify-between border-b border-gray-700 pb-2">
+                <span>Thursday</span>
+                <span>6:00 AM – 10:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Saturday</span>
+                <span>6:00 AM – 10:00 PM</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* WOMEN */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.4 }}
+            className="bg-zinc-900 border border-yellow-400/30 rounded-2xl p-8"
+          >
+            <h3 className="text-2xl font-bold mb-4 text-yellow-400">
+              Women Training
+            </h3>
+
+            <p className="text-gray-300 mb-6">3 Days Per Week</p>
+
+            <ul className="space-y-3 text-gray-400">
+              <li className="flex justify-between border-b border-gray-700 pb-2">
+                <span>Wednesday</span>
+                <span>6:00 AM – 10:00 PM</span>
+              </li>
+              <li className="flex justify-between border-b border-gray-700 pb-2">
+                <span>Friday</span>
+                <span>6:00 AM – 10:00 PM</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Sunday</span>
+                <span>6:00 AM – 10:00 PM</span>
+              </li>
+            </ul>
+          </motion.div>
+
+        </div>
 
       </div>
     </section>

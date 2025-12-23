@@ -5,6 +5,7 @@ import Aboutus from "../components/Aboutus";
 import WhyTrainWithUs from "../components/WhyTrainWithUs";
 import Map from "../components/Map";
 import Contact from "../components/Contact";
+import Subscribe from "../components/Subscribe";
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <WhyTrainWithUs />
       <Map />
       <Contact />
+      <Subscribe />
     </>
   );
 }

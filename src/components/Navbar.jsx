@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-// ✅ Import logo (Vite way)
 import aznakLogo from "../assets/images/aznak_logo.jpg";
 
 export default function Navbar() {
@@ -23,113 +22,114 @@ export default function Navbar() {
 
     if (item.route) {
       navigate(item.route);
-    } else if (item.id) {
+      return;
+    }
+
+    if (item.id) {
       if (location.pathname !== "/") {
-        navigate("/", { replace: false });
+        navigate("/");
         setTimeout(() => {
-          const el = document.getElementById(item.id);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 50);
+          document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
       } else {
-        const el = document.getElementById(item.id);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
-
-  // Single button for Restricted1 page
-  const goToRestricted = () => navigate("/restricted1");
 
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7 }}
-      className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-lg"
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-yellow-400/10"
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        {/* Logo */}
+        {/* LOGO */}
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 80 }}
+          whileHover={{ scale: 1.05 }}
           className="flex items-center gap-3 cursor-pointer"
           onClick={() => handleClick({ id: "hero" })}
         >
           <img
-            src={aznakLogo} // ✅ imported logo
+            src={aznakLogo}
             alt="Aznak Gym Logo"
-            className="w-16 h-16 object-contain rounded-full"
+            className="w-14 h-14 rounded-full object-cover"
           />
-          <h1 className="text-white text-2xl font-extrabold tracking-wide">
-            AZNAK GYM
-          </h1>
+          <span className="text-white text-xl font-extrabold tracking-wide">
+            AZNAK <span className="text-yellow-400">GYM</span>
+          </span>
         </motion.div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-6 text-white text-lg font-semibold">
+        {/* DESKTOP MENU */}
+        <ul className="hidden md:flex items-center gap-8 text-white font-semibold">
           {menuItems.map((item, i) => (
-            <motion.li
+            <li
               key={i}
-              whileHover={{ scale: 1.1 }}
-              className="relative cursor-pointer group"
               onClick={() => handleClick(item)}
+              className="relative cursor-pointer group"
             >
-              {item.name}
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-            </motion.li>
+              <span className="transition group-hover:text-yellow-400">
+                {item.name}
+              </span>
+              <span className="absolute left-0 -bottom-2 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
+            </li>
           ))}
 
-          {/* Button to Restricted1.jsx */}
-          <motion.li
+          {/* RESTRICTED BUTTON */}
+          <motion.button
             whileHover={{ scale: 1.05 }}
-            className="ml-4 px-4 py-2 bg-yellow-500 text-white font-bold rounded-lg cursor-pointer shadow hover:bg-yellow-600 transition text-center"
-            onClick={goToRestricted}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/restricted1")}
+            className="ml-4 bg-yellow-400 hover:bg-yellow-500 text-black px-5 py-2 rounded-full font-bold transition"
           >
-            Accès Restreint
-          </motion.li>
+            Sign Up
+          </motion.button>
         </ul>
 
-        {/* Mobile Burger */}
-        <div className="md:hidden flex">
-          <button onClick={() => setOpen(!open)}>
-            <div className="space-y-2">
-              <span className="block w-8 h-1 bg-white"></span>
-              <span className="block w-8 h-1 bg-white"></span>
-              <span className="block w-8 h-1 bg-white"></span>
-            </div>
-          </button>
-        </div>
+        {/* MOBILE BURGER */}
+        <button
+          className="md:hidden flex flex-col gap-2"
+          onClick={() => setOpen(!open)}
+        >
+          <span className="w-8 h-[3px] bg-white rounded"></span>
+          <span className="w-8 h-[3px] bg-white rounded"></span>
+          <span className="w-8 h-[3px] bg-white rounded"></span>
+        </button>
       </div>
 
-      {/* Mobile Menu */}
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="md:hidden bg-black/90 text-white px-6 py-4 space-y-4"
-        >
-          {menuItems.map((item, i) => (
-            <div
-              key={i}
-              className="border-b border-white/20 pb-2 cursor-pointer hover:text-yellow-400 transition relative"
-              onClick={() => handleClick(item)}
-            >
-              {item.name}
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-            </div>
-          ))}
-
-          {/* Mobile button */}
-          <div
-            className="border-b border-white/20 pb-2 cursor-pointer hover:bg-red-500 hover:text-white rounded-lg px-2 py-1 text-center"
-            onClick={goToRestricted}
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="md:hidden bg-black border-t border-yellow-400/10"
           >
-            Accès Restreint
-          </div>
-        </motion.div>
-      )}
+            <div className="flex flex-col px-6 py-6 space-y-5 text-white">
+              {menuItems.map((item, i) => (
+                <div
+                  key={i}
+                  onClick={() => handleClick(item)}
+                  className="text-lg font-semibold border-b border-white/10 pb-2 hover:text-yellow-400 transition cursor-pointer"
+                >
+                  {item.name}
+                </div>
+              ))}
+
+              <button
+                onClick={() => navigate("/restricted1")}
+                className="mt-4 bg-yellow-400 text-black py-3 rounded-full font-bold hover:bg-yellow-500 transition"
+              >
+                Accès Restreint
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
