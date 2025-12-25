@@ -13,86 +13,86 @@ export default function Services() {
   const services = [
     {
       icon: Dumbbell,
-      title: "Musculation",
+      title: "Strength Training",
       description:
-        "Développez votre force et votre masse musculaire avec des programmes structurés.",
+        "Build strength and muscle with structured, professional training programs.",
       image:
         "https://images.unsplash.com/photo-1676989121400-63ba765d7f55?w=1200",
       features: [
-        "Poids libres & machines",
-        "Programmes personnalisés",
-        "Progression encadrée",
-        "Coachs professionnels",
+        "Free weights & machines",
+        "Personalized programs",
+        "Guided progression",
+        "Professional coaches",
       ],
     },
     {
       icon: Activity,
       title: "Fitness Classes",
       description:
-        "Cours collectifs dynamiques pour rester motivé et brûler un maximum.",
+        "High-energy group classes designed to keep you motivated and burn calories.",
       image:
         "https://images.unsplash.com/photo-1630415187908-39d6d209b15c?w=1200",
       features: [
-        "Tous niveaux",
-        "Coachs certifiés",
-        "Petits groupes",
-        "Ambiance motivante",
+        "All fitness levels",
+        "Certified instructors",
+        "Small group sessions",
+        "Motivating atmosphere",
       ],
     },
     {
       icon: Zap,
       title: "Cross Training",
       description:
-        "Entraînement fonctionnel intensif pour performance et endurance.",
+        "High-intensity functional training to improve performance and endurance.",
       image:
         "https://images.unsplash.com/photo-1639511205180-7b2865b2f467?w=1200",
       features: [
-        "HIIT & force",
-        "Haltérophilie",
-        "Conditionnement",
-        "Esprit d’équipe",
+        "HIIT workouts",
+        "Weightlifting",
+        "Conditioning",
+        "Team spirit",
       ],
     },
     {
       icon: Users,
       title: "Boxing",
       description:
-        "Améliorez votre puissance, vitesse et confiance avec la boxe.",
+        "Improve strength, speed, and confidence through professional boxing training.",
       image:
         "https://images.unsplash.com/photo-1716307043003-dbe6a5cc496e?w=1200",
       features: [
         "Technique & cardio",
-        "Sacs de frappe",
-        "Agilité",
-        "Sparring",
+        "Punching bags",
+        "Agility training",
+        "Sparring sessions",
       ],
     },
     {
       icon: Music,
       title: "Dance Fitness",
       description:
-        "Brûlez des calories en vous amusant avec des cours dansants.",
+        "Burn calories while having fun with energetic dance-based workouts.",
       image:
         "https://images.unsplash.com/photo-1630415187908-39d6d209b15c?w=1200",
       features: [
-        "Zumba",
-        "Cardio dance",
-        "Musique énergique",
-        "Full body",
+        "Zumba classes",
+        "Dance cardio",
+        "High-energy music",
+        "Full-body workout",
       ],
     },
     {
       icon: Heart,
       title: "Cardio Training",
       description:
-        "Améliorez votre endurance avec un espace cardio moderne.",
+        "Improve your endurance with a fully equipped, modern cardio zone.",
       image:
         "https://images.unsplash.com/photo-1761971976282-b2bb051a5474?w=1200",
       features: [
-        "Tapis & vélos",
-        "HIIT cardio",
-        "Suivi fréquence cardiaque",
-        "Perte de graisse",
+        "Treadmills & bikes",
+        "HIIT cardio sessions",
+        "Heart rate tracking",
+        "Fat loss programs",
       ],
     },
   ];
@@ -104,7 +104,7 @@ export default function Services() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600"
-            alt="Services Aznak Gym"
+            alt="Aznak Gym Services"
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-black/70" />
@@ -117,10 +117,10 @@ export default function Services() {
           className="relative z-10 text-center px-6"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold mb-3">
-            Nos <span className="text-yellow-400">Services</span>
+            Our <span className="text-yellow-400">Services</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Des programmes adaptés à tous les niveaux pour atteindre vos objectifs
+            Professional training programs designed for all fitness levels
           </p>
         </motion.div>
       </section>
@@ -183,7 +183,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* 🔥 CTA – READY TO GET STARTED */}
+      {/* 🔥 CTA */}
       <section className="py-24 bg-black border-t border-yellow-400/20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -197,7 +197,7 @@ export default function Services() {
           </h2>
 
           <p className="text-gray-300 text-lg mb-10">
-            Rejoignez AZNAK GYM dès aujourd’hui et commencez votre transformation.
+            Join AZNAK GYM today and start your fitness transformation.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
