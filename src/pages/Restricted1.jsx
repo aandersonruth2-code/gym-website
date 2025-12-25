@@ -158,5 +158,7 @@ export default function Restricted1() {
         )}
       </motion.form>
     </div>
+
+    
   );
 }

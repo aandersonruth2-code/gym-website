@@ -1,8 +1,8 @@
 import Hero from "../components/Hero";
-import Services from "../components/Services";
+import Opentime from "../components/Opentime";
 import Pricing from "../components/Pricing";
 import Aboutus from "../components/Aboutus";
-import WhyTrainWithUs from "../components/WhyTrainWithUs";
+import Coaches from "../components/Coaches";
 import Map from "../components/Map";
 import Contact from "../components/Contact";
 import Subscribe from "../components/Subscribe";
@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Services />
+      <Opentime />
       <Pricing />
       <Aboutus />
-      <WhyTrainWithUs />
+      <Coaches />
       <Map />
       <Contact />
       <Subscribe />

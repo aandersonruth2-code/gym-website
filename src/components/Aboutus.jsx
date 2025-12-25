@@ -95,7 +95,7 @@ export default function Aboutus() {
             whileTap={{ scale: 0.95 }}
             className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-4 rounded-full transition"
           >
-            Join Our Gym
+            See More
           </motion.button>
         </motion.div>
 

@@ -3,7 +3,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import Coaches from "./pages/Coaches";
+import Aboutus from "./pages/Aboutus";
+import Services from "./pages/Services";
 import Restricted1 from "./pages/Restricted1"; // import Restricted.jsx
 
 export default function App() {
@@ -13,7 +14,8 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/coaches" element={<Coaches />} />
+        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/Services" element={<Services />} />
         <Route path="/restricted1" element={<Restricted1 />} /> {/* route to Restricted page */}
       </Routes>
 

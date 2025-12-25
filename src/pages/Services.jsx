@@ -1,0 +1,222 @@
+import { motion } from "framer-motion";
+import {
+  Dumbbell,
+  Users,
+  Zap,
+  Activity,
+  Music,
+  Heart,
+  CheckCircle,
+} from "lucide-react";
+
+export default function Services() {
+  const services = [
+    {
+      icon: Dumbbell,
+      title: "Musculation",
+      description:
+        "Développez votre force et votre masse musculaire avec des programmes structurés.",
+      image:
+        "https://images.unsplash.com/photo-1676989121400-63ba765d7f55?w=1200",
+      features: [
+        "Poids libres & machines",
+        "Programmes personnalisés",
+        "Progression encadrée",
+        "Coachs professionnels",
+      ],
+    },
+    {
+      icon: Activity,
+      title: "Fitness Classes",
+      description:
+        "Cours collectifs dynamiques pour rester motivé et brûler un maximum.",
+      image:
+        "https://images.unsplash.com/photo-1630415187908-39d6d209b15c?w=1200",
+      features: [
+        "Tous niveaux",
+        "Coachs certifiés",
+        "Petits groupes",
+        "Ambiance motivante",
+      ],
+    },
+    {
+      icon: Zap,
+      title: "Cross Training",
+      description:
+        "Entraînement fonctionnel intensif pour performance et endurance.",
+      image:
+        "https://images.unsplash.com/photo-1639511205180-7b2865b2f467?w=1200",
+      features: [
+        "HIIT & force",
+        "Haltérophilie",
+        "Conditionnement",
+        "Esprit d’équipe",
+      ],
+    },
+    {
+      icon: Users,
+      title: "Boxing",
+      description:
+        "Améliorez votre puissance, vitesse et confiance avec la boxe.",
+      image:
+        "https://images.unsplash.com/photo-1716307043003-dbe6a5cc496e?w=1200",
+      features: [
+        "Technique & cardio",
+        "Sacs de frappe",
+        "Agilité",
+        "Sparring",
+      ],
+    },
+    {
+      icon: Music,
+      title: "Dance Fitness",
+      description:
+        "Brûlez des calories en vous amusant avec des cours dansants.",
+      image:
+        "https://images.unsplash.com/photo-1630415187908-39d6d209b15c?w=1200",
+      features: [
+        "Zumba",
+        "Cardio dance",
+        "Musique énergique",
+        "Full body",
+      ],
+    },
+    {
+      icon: Heart,
+      title: "Cardio Training",
+      description:
+        "Améliorez votre endurance avec un espace cardio moderne.",
+      image:
+        "https://images.unsplash.com/photo-1761971976282-b2bb051a5474?w=1200",
+      features: [
+        "Tapis & vélos",
+        "HIIT cardio",
+        "Suivi fréquence cardiaque",
+        "Perte de graisse",
+      ],
+    },
+  ];
+
+  return (
+    <div className="bg-black text-white">
+      {/* 🔥 SMALL HERO */}
+      <section className="relative h-[280px] flex items-center justify-center">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600"
+            alt="Services Aznak Gym"
+            className="w-full h-full object-cover opacity-40"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center px-6"
+        >
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-3">
+            Nos <span className="text-yellow-400">Services</span>
+          </h1>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            Des programmes adaptés à tous les niveaux pour atteindre vos objectifs
+          </p>
+        </motion.div>
+      </section>
+
+      {/* 🔥 SERVICES */}
+      <section className="pt-24 pb-32 px-6">
+        <div className="max-w-7xl mx-auto space-y-28">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            >
+              {/* TEXT */}
+              <div
+                className={`${
+                  index % 2 === 0 ? "lg:order-1" : "lg:order-2"
+                }`}
+              >
+                <div className="inline-flex items-center gap-3 bg-yellow-400 text-black px-4 py-2 rounded-full mb-6 font-bold">
+                  <service.icon className="w-5 h-5" />
+                  AZNAK GYM
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+                  {service.title}
+                </h2>
+
+                <p className="text-gray-300 text-lg mb-8">
+                  {service.description}
+                </p>
+
+                <ul className="space-y-4">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-yellow-400 mt-1" />
+                      <span className="text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* IMAGE */}
+              <div
+                className={`relative h-[460px] rounded-2xl overflow-hidden shadow-2xl ${
+                  index % 2 === 0 ? "lg:order-2" : "lg:order-1"
+                }`}
+              >
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover hover:scale-110 transition duration-700"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 🔥 CTA – READY TO GET STARTED */}
+      <section className="py-24 bg-black border-t border-yellow-400/20">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto text-center px-6"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+            Ready to Get <span className="text-yellow-400">Started</span>?
+          </h2>
+
+          <p className="text-gray-300 text-lg mb-10">
+            Rejoignez AZNAK GYM dès aujourd’hui et commencez votre transformation.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#pricing"
+              className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 rounded-full font-bold transition"
+            >
+              View Membership Plans
+            </a>
+
+            <a
+              href="#contact"
+              className="border border-white text-white hover:bg-white hover:text-black px-8 py-4 rounded-full font-bold transition"
+            >
+              Contact Us
+            </a>
+          </div>
+        </motion.div>
+      </section>
+    </div>
+  );
+}
