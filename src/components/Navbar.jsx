@@ -11,8 +11,7 @@ export default function Navbar() {
 
   const menuItems = [
     { name: "Home", id: "hero" },
-    { name: "About", id: "about" },
-    { name: "Coaching", route: "/aboutus" }, 
+    { name: "About", route: "/aboutus" },
     { name: "Services", route: "/services" },
     { name: "Plans", id: "pricing" },
     { name: "Contact", id: "contact" },

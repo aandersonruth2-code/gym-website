@@ -1,9 +1,15 @@
 import { motion } from "framer-motion";
-import aboutImg from "../assets/images/FM1.jpg"; // change image if needed
+import { useNavigate } from "react-router-dom";
+import aboutImg from "../assets/images/FM1.jpg";
 
 export default function Aboutus() {
+  const navigate = useNavigate();
+
   return (
-    <section id="about" className="bg-black text-white py-20 px-6 overflow-hidden">
+    <section
+      id="about"
+      className="bg-black text-white py-20 px-6 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
         {/* IMAGE */}
@@ -15,6 +21,7 @@ export default function Aboutus() {
           className="relative"
         >
           <div className="absolute -top-6 -left-6 w-full h-full border-4 border-yellow-400 rounded-xl"></div>
+
           <img
             src={aboutImg}
             alt="Gym Training"
@@ -58,9 +65,9 @@ export default function Aboutus() {
             transition={{ duration: 1.4, delay: 0.6 }}
             className="text-gray-300 mb-6 leading-relaxed"
           >
-            Our gym is designed for those who want more than just workouts.
-            We offer professional equipment, expert trainers, and an
-            environment that pushes you to be your best every single day.
+            Our gym is built for people who want real results. We combine
+            professional equipment, certified trainers, and a motivating
+            environment to help you push beyond your limits every single day.
           </motion.p>
 
           {/* STATS */}
@@ -75,10 +82,12 @@ export default function Aboutus() {
               <h3 className="text-yellow-400 text-3xl font-bold">10+</h3>
               <p className="text-gray-400 text-sm">Years Experience</p>
             </div>
+
             <div>
               <h3 className="text-yellow-400 text-3xl font-bold">25+</h3>
               <p className="text-gray-400 text-sm">Expert Trainers</p>
             </div>
+
             <div>
               <h3 className="text-yellow-400 text-3xl font-bold">1k+</h3>
               <p className="text-gray-400 text-sm">Happy Members</p>
@@ -87,6 +96,7 @@ export default function Aboutus() {
 
           {/* BUTTON */}
           <motion.button
+            onClick={() => navigate("/aboutus")}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
