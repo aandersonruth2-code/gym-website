@@ -9,7 +9,7 @@ export default function SocialMediaFixed() {
       transition={{ duration: 0.7 }}
       className="fixed bottom-4 right-4 z-50 flex flex-col gap-4 bg-black bg-opacity-80 p-4 rounded-lg shadow-lg"
     >
-      <h3 className="text-white font-bold text-center text-sm">Suivez-nous</h3>
+      <h3 className="text-white font-bold text-center text-sm">Contact us</h3>
       <div className="flex gap-4 text-2xl justify-center">
         <a
           href="https://wa.me/212600123456"
