@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import { pricingData } from "../data/pricingdata";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react"; // <-- added
 
 export default function Pricing() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   const handleSignup = (planTitle) => {

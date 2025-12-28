@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { openTimeData } from "../data/opentimedata";
+import { useEffect } from "react"; // <-- added
 
 export default function GymSchedule() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className="bg-black text-white py-20 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">

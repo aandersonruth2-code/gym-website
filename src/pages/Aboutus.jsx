@@ -4,6 +4,7 @@ import Coaches from "../components/Coaches";
 import Contact from "../components/Contact";
 import { useEffect } from "react"; // <-- added
 
+
 /* animation presets */
 const fadeUp = {
   hidden: { opacity: 0, y: 50 },
@@ -11,6 +12,7 @@ const fadeUp = {
 };
 
 export default function About() {
+ 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
