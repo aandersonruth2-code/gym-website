@@ -20,7 +20,7 @@ export default function Aboutus() {
           transition={{ duration: 1.4, ease: "easeOut" }}
           className="relative"
         >
-          <div className="absolute -top-6 -left-6 w-full h-full border-4 border-yellow-400 rounded-xl"></div>
+          <div className="absolute -top-6 -left-6 w-full h-full border-4 border-main rounded-xl"></div>
 
           <img
             src={aboutImg}
@@ -41,7 +41,7 @@ export default function Aboutus() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.3 }}
-            className="text-yellow-400 font-semibold tracking-widest uppercase mb-3"
+            className="text-main font-semibold tracking-widest uppercase mb-3"
           >
             About Our Gym
           </motion.h4>
@@ -54,7 +54,7 @@ export default function Aboutus() {
             className="text-4xl md:text-5xl font-extrabold leading-tight mb-6"
           >
             Train Hard. <br />
-            <span className="text-yellow-400">Stay Strong.</span> <br />
+            <span className="text-main">Stay Strong.</span> <br />
             Live Better.
           </motion.h2>
 
@@ -79,17 +79,17 @@ export default function Aboutus() {
             className="grid grid-cols-3 gap-6 mb-8"
           >
             <div>
-              <h3 className="text-yellow-400 text-3xl font-bold">10+</h3>
+              <h3 className="text-main text-3xl font-bold">10+</h3>
               <p className="text-gray-400 text-sm">Years Experience</p>
             </div>
 
             <div>
-              <h3 className="text-yellow-400 text-3xl font-bold">25+</h3>
+              <h3 className="text-main text-3xl font-bold">25+</h3>
               <p className="text-gray-400 text-sm">Expert Trainers</p>
             </div>
 
             <div>
-              <h3 className="text-yellow-400 text-3xl font-bold">1k+</h3>
+              <h3 className="text-main text-3xl font-bold">1k+</h3>
               <p className="text-gray-400 text-sm">Happy Members</p>
             </div>
           </motion.div>
@@ -103,7 +103,7 @@ export default function Aboutus() {
             transition={{ duration: 1.4, delay: 1 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-4 rounded-full transition"
+            className="bg-main hover:bg-main/80 text-black font-semibold px-8 py-4 rounded-full transition"
           >
             See More
           </motion.button>

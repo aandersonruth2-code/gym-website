@@ -8,11 +8,17 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black flex items-center overflow-hidden pt-28"
+      className="relative min-h-screen flex items-center overflow-hidden pt-28 bg-gradient-to-br from-black via-zinc-900 to-black"
     >
       {/* AMBIENT GLOWS */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-yellow-400/60 blur-[140px] rounded-full" />
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-yellow-400/60 blur-[140px] rounded-full" />
+      <div
+        className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-[140px]"
+        style={{ backgroundColor: "var(--main-color)", opacity: 0.6 }}
+      />
+      <div
+        className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-[140px]"
+        style={{ backgroundColor: "var(--main-color)", opacity: 0.6 }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-16">
 
@@ -24,18 +30,17 @@ export default function Hero() {
           className="text-white text-center md:text-left"
         >
           <h1 className="font-extrabold uppercase italic leading-[1.05] tracking-tight">
-            <span className="block text-3xl sm:text-4xl md:text-5xl">
-              Unleash Your
-            </span>
-            <span className="block text-3xl sm:text-4xl md:text-5xl">
-              Power At
-            </span>
-            <span className="block text-5xl sm:text-6xl md:text-7xl text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.6)]">
+            <span className="block text-3xl sm:text-4xl md:text-5xl">Unleash Your</span>
+            <span className="block text-3xl sm:text-4xl md:text-5xl">Power At</span>
+            <span
+              className="block text-5xl sm:text-6xl md:text-7xl drop-shadow-[0_0_30px_var(--main-color)]"
+              style={{ color: "var(--main-color)" }}
+            >
               AZNAK GYM
             </span>
           </h1>
 
-          {/* CTA — FIXED */}
+          {/* CTA BUTTON */}
           <motion.button
             type="button"
             onClick={() => navigate("/restricted1")}
@@ -44,7 +49,8 @@ export default function Hero() {
             transition={{ delay: 0.8, duration: 1.4 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-10 bg-yellow-400 hover:bg-yellow-300 text-black px-12 py-4 font-extrabold uppercase tracking-wider rounded-full shadow-[0_0_30px_rgba(250,204,21,0.6)] transition"
+            className="mt-10 text-black font-extrabold uppercase tracking-wider px-12 py-4 rounded-full transition"
+            style={{ backgroundColor: "var(--main-color)" }}
           >
             Sign Up
           </motion.button>
@@ -71,13 +77,17 @@ export default function Hero() {
             <motion.div
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-0 rounded-full border-4 border-yellow-400/70 shadow-[0_0_80px_20px_rgba(250,204,21,0.5)]"
+              className="absolute inset-0 rounded-full border-4"
+              style={{
+                borderColor: "var(--main-color)",
+                boxShadow: "0 0 80px 20px var(--main-color)",
+              }}
             />
 
-            {/* INNER */}
+            {/* INNER BLACK CIRCLE */}
             <div className="absolute inset-6 rounded-full bg-black" />
 
-            {/* IMAGE */}
+            {/* ATHLETE IMAGE */}
             <motion.img
               src={manImage}
               alt="Aznak Gym Athlete"
@@ -88,7 +98,6 @@ export default function Hero() {
             />
           </motion.div>
         </div>
-
       </div>
     </section>
   );

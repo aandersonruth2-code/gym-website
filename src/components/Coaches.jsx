@@ -14,12 +14,12 @@ export default function Coaches() {
           transition={{ duration: 1.4 }}
           className="text-center mb-16"
         >
-          <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
+          <h4 className="text-main uppercase tracking-widest font-semibold mb-3">
             {coachesData.title.small}
           </h4>
 
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            Meet Our <span className="text-yellow-400">Professional Team</span>
+            Meet Our <span className="text-main">Professional Team</span>
           </h2>
 
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
@@ -37,7 +37,7 @@ export default function Coaches() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, delay: index * 0.2 }}
-              className="group bg-zinc-900 rounded-2xl overflow-hidden border border-yellow-400/20 hover:border-yellow-400 transition"
+              className="group bg-zinc-900 rounded-2xl overflow-hidden border border-main/20 hover:border-main transition"
             >
               {/* IMAGE */}
               <div className="relative">
@@ -55,7 +55,7 @@ export default function Coaches() {
                   {coach.name}
                 </h3>
 
-                <p className="text-yellow-400 font-semibold mb-2">
+                <p className="text-main font-semibold mb-2">
                   {coach.role}
                 </p>
 

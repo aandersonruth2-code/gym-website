@@ -15,7 +15,7 @@ export default function SocialMediaFixed() {
           href="https://wa.me/212600123456"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-yellow-500 hover:scale-110 transition"
+          className="text-main hover:scale-110 transition"
         >
           <FaWhatsapp />
         </a>
@@ -24,7 +24,7 @@ export default function SocialMediaFixed() {
           href="https://www.instagram.com/your_instagram_username"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-yellow-500 hover:scale-110 transition"
+          className="text-main hover:scale-110 transition"
         >
           <FaInstagram />
         </a>
@@ -33,14 +33,14 @@ export default function SocialMediaFixed() {
           href="https://www.facebook.com/your_facebook_page"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-yellow-500 hover:scale-110 transition"
+          className="text-main hover:scale-110 transition"
         >
           <FaFacebook />
         </a>
 
         <a
           href="mailto:contact@aznakgym.com"
-          className="text-yellow-500 hover:scale-110 transition"
+          className="text-main hover:scale-110 transition"
         >
           <FaEnvelope />
         </a>

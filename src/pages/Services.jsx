@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Contact from "../components/Contact";
 import { useEffect } from "react";
 import { CheckCircle } from "lucide-react";
-import servicesData from "../data/servicesData"; // <-- import data
+import servicesData from "../data/servicesData";
 
 export default function Services() {
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Services() {
           className="relative z-10 text-center px-6"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold mb-3">
-            Our <span className="text-yellow-400">Services</span>
+            Our <span className="text-[var(--main-color)]">Services</span>
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Professional training programs designed for all fitness levels
@@ -51,7 +51,7 @@ export default function Services() {
             >
               {/* TEXT */}
               <div className={`${index % 2 === 0 ? "lg:order-1" : "lg:order-2"}`}>
-                <div className="inline-flex items-center gap-3 bg-yellow-400 text-black px-4 py-2 rounded-full mb-6 font-bold">
+                <div className="inline-flex items-center gap-3 bg-[var(--main-color)] text-black px-4 py-2 rounded-full mb-6 font-bold">
                   <service.icon className="w-5 h-5" />
                   AZNAK GYM
                 </div>
@@ -65,7 +65,7 @@ export default function Services() {
                 <ul className="space-y-4">
                   {service.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 text-yellow-400 mt-1" />
+                      <CheckCircle className="w-6 h-6 text-[var(--main-color)] mt-1" />
                       <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
@@ -86,7 +86,7 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-black border-t border-yellow-400/20">
+      <section className="py-24 bg-black border-t border-[var(--main-color)]/20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export default function Services() {
           className="max-w-4xl mx-auto text-center px-6"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Ready to Get <span className="text-yellow-400">Started</span>?
+            Ready to Get <span className="text-[var(--main-color)]">Started</span>?
           </h2>
 
           <p className="text-gray-300 text-lg mb-10">
@@ -105,7 +105,7 @@ export default function Services() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#pricing"
-              className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 rounded-full font-bold transition"
+              className="bg-[var(--main-color)] hover:bg-opacity-90 text-black px-8 py-4 rounded-full font-bold transition"
             >
               View Membership Plans
             </a>

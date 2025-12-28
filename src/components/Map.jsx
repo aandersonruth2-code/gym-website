@@ -4,9 +4,15 @@ export default function MapSection() {
   return (
     <section className="relative py-24 px-6 md:px-16 bg-black text-white overflow-hidden">
       
-      {/* Yellow ambient glow */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-yellow-400/30 blur-[140px] rounded-full" />
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-yellow-400/30 blur-[140px] rounded-full" />
+      {/* Ambient Glows */}
+      <div
+        className="absolute -top-32 -left-32 w-96 h-96 blur-[140px] rounded-full"
+        style={{ backgroundColor: "var(--main-color)", opacity: 0.3 }}
+      />
+      <div
+        className="absolute -bottom-32 -right-32 w-96 h-96 blur-[140px] rounded-full"
+        style={{ backgroundColor: "var(--main-color)", opacity: 0.3 }}
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto">
 
@@ -19,10 +25,10 @@ export default function MapSection() {
           className="text-center mb-14"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold uppercase tracking-wide mb-4">
-            Our <span className="text-yellow-400">Location</span>
+            Our <span style={{ color: "var(--main-color)" }}>Location</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Easily find <span className="text-yellow-400 font-semibold">AZNAK GYM</span> using the map below.
+            Easily find <span style={{ color: "var(--main-color)", fontWeight: 600 }}>AZNAK GYM</span> using the map below.
           </p>
         </motion.div>
 
@@ -32,11 +38,15 @@ export default function MapSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.4, ease: "easeOut" }}
-          className="relative rounded-3xl overflow-hidden border border-yellow-400/30 shadow-[0_0_80px_10px_rgba(250,204,21,0.25)]"
+          className="relative rounded-3xl overflow-hidden border shadow-[0_0_80px_10px_rgba(250,204,21,0.25)]"
+          style={{ borderColor: "var(--main-color)", boxShadow: `0 0 80px 10px var(--main-color, rgba(250,204,21,0.25))` }}
         >
           {/* Top bar */}
-          <div className="absolute top-0 left-0 w-full h-12 bg-black/80 backdrop-blur flex items-center px-6 z-20 border-b border-yellow-400/20">
-            <span className="text-yellow-400 font-bold tracking-wider uppercase">
+          <div
+            className="absolute top-0 left-0 w-full h-12 bg-black/80 backdrop-blur flex items-center px-6 z-20 border-b"
+            style={{ borderColor: "var(--main-color)" }}
+          >
+            <span style={{ color: "var(--main-color)", fontWeight: 700 }} className="tracking-wider uppercase">
               AZNAK GYM — Tangier
             </span>
           </div>

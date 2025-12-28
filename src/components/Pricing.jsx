@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { pricingData } from "../data/pricingdata";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react"; // <-- added
+import { useEffect } from "react";
 
 export default function Pricing() {
   useEffect(() => {
@@ -25,12 +25,15 @@ export default function Pricing() {
           transition={{ duration: 1.4 }}
           className="text-center mb-16"
         >
-          <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
+          <h4
+            className="uppercase tracking-widest font-semibold mb-3"
+            style={{ color: "var(--main-color)" }}
+          >
             {pricingData.title.small}
           </h4>
 
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            Choose Your <span className="text-yellow-400">Duration</span>
+            Choose Your <span style={{ color: "var(--main-color)" }}>Duration</span>
           </h2>
 
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
@@ -48,13 +51,19 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, delay: index * 0.2 }}
-              className={`relative bg-zinc-900 rounded-2xl p-8 border 
-                ${plan.popular ? "border-yellow-400" : "border-yellow-400/20"}
-              `}
+              className="relative bg-zinc-900 rounded-2xl p-8"
+              style={{
+                border: plan.popular
+                  ? `1px solid var(--main-color)`
+                  : `1px solid var(--main-color, 0.2)`,
+              }}
             >
               {/* MOST POPULAR */}
               {plan.popular && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-sm font-semibold px-4 py-1 rounded-full">
+                <span
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 text-black text-sm font-semibold px-4 py-1 rounded-full"
+                  style={{ backgroundColor: "var(--main-color)" }}
+                >
                   Most Popular
                 </span>
               )}
@@ -68,7 +77,10 @@ export default function Pricing() {
               </p>
 
               <div className="text-center mb-6">
-                <span className="text-yellow-400 text-4xl font-extrabold">
+                <span
+                  className="text-4xl font-extrabold"
+                  style={{ color: "var(--main-color)" }}
+                >
                   {plan.price}
                 </span>
               </div>
@@ -76,7 +88,7 @@ export default function Pricing() {
               <ul className="space-y-3 text-gray-400 text-sm mb-8">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-2">
-                    <span className="text-yellow-400">✔</span>
+                    <span style={{ color: "var(--main-color)" }}>✔</span>
                     {feature}
                   </li>
                 ))}
@@ -87,13 +99,12 @@ export default function Pricing() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleSignup(plan.title)}
-                className={`w-full py-3 rounded-xl font-extrabold transition
-                  ${
-                    plan.popular
-                      ? "bg-yellow-400 text-black hover:bg-yellow-300"
-                      : "border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black"
-                  }
-                `}
+                className={`w-full py-3 rounded-xl font-extrabold transition`}
+                style={{
+                  backgroundColor: plan.popular ? "var(--main-color)" : "transparent",
+                  color: plan.popular ? "black" : "var(--main-color)",
+                  border: plan.popular ? "none" : `1px solid var(--main-color)`,
+                }}
               >
                 Sign Up
               </motion.button>

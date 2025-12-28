@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; 
 
 // Replace images with your real coach photos
 import coach1 from "../assets/images/FM.jpg";
@@ -39,11 +39,14 @@ export default function Coaches() {
           transition={{ duration: 1.4 }}
           className="text-center mb-16"
         >
-          <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
+          <h4
+            className="uppercase tracking-widest font-semibold mb-3"
+            style={{ color: "var(--main-color)" }}
+          >
             Our Coaches
           </h4>
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            Meet Our <span className="text-yellow-400">Professional Team</span>
+            Meet Our <span style={{ color: "var(--main-color)" }}>Professional Team</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
             Certified trainers dedicated to helping you reach your fitness goals.
@@ -60,7 +63,8 @@ export default function Coaches() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, delay: index * 0.2 }}
-              className="bg-zinc-900 rounded-2xl overflow-hidden border border-yellow-400/20 hover:border-yellow-400 transition"
+              className="bg-zinc-900 rounded-2xl overflow-hidden border transition"
+              style={{ borderColor: "var(--main-color, rgba(255, 255, 0, 0.2))" }}
             >
               {/* IMAGE */}
               <div className="relative group">
@@ -77,7 +81,10 @@ export default function Coaches() {
                 <h3 className="text-xl font-bold mb-1">
                   {coach.name}
                 </h3>
-                <p className="text-yellow-400 font-semibold mb-2">
+                <p
+                  className="font-semibold mb-2"
+                  style={{ color: "var(--main-color)" }}
+                >
                   {coach.role}
                 </p>
                 <p className="text-gray-400 text-sm">

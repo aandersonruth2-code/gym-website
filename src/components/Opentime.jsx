@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { openTimeData } from "../data/opentimedata";
-import { useEffect } from "react"; // <-- added
+import { useEffect } from "react";
 
 export default function GymSchedule() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <section className="bg-black text-white py-20 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -18,12 +19,15 @@ export default function GymSchedule() {
           transition={{ duration: 1.4, ease: "easeOut" }}
           className="text-center mb-14"
         >
-          <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
+          <h4
+            className="uppercase tracking-widest font-semibold mb-3"
+            style={{ color: "var(--main-color)" }}
+          >
             {openTimeData.title.small}
           </h4>
 
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            Opening <span className="text-yellow-400">Schedule</span>
+            Opening <span style={{ color: "var(--main-color)" }}>Schedule</span>
           </h2>
 
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
@@ -40,9 +44,13 @@ export default function GymSchedule() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, delay: 0.2 }}
-            className="bg-zinc-900 border border-yellow-400/30 rounded-2xl p-8"
+            className="bg-zinc-900 rounded-2xl p-8"
+            style={{ borderColor: "var(--main-color)", borderWidth: "1px" }}
           >
-            <h3 className="text-2xl font-bold mb-4 text-yellow-400">
+            <h3
+              className="text-2xl font-bold mb-4"
+              style={{ color: "var(--main-color)" }}
+            >
               {openTimeData.men.label}
             </h3>
 
@@ -69,9 +77,13 @@ export default function GymSchedule() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, delay: 0.4 }}
-            className="bg-zinc-900 border border-yellow-400/30 rounded-2xl p-8"
+            className="bg-zinc-900 rounded-2xl p-8"
+            style={{ borderColor: "var(--main-color)", borderWidth: "1px" }}
           >
-            <h3 className="text-2xl font-bold mb-4 text-yellow-400">
+            <h3
+              className="text-2xl font-bold mb-4"
+              style={{ color: "var(--main-color)" }}
+            >
               {openTimeData.women.label}
             </h3>
 

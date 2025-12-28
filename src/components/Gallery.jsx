@@ -13,11 +13,11 @@ export default function GalleryPage() {
           transition={{ duration: 1.2 }}
           className="text-center mb-16"
         >
-          <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
+          <h4 className="text-main uppercase tracking-widest font-semibold mb-3">
             Our Gallery
           </h4>
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            Fitness <span className="text-yellow-400">Moments</span>
+            Fitness <span className="text-main">Moments</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
             Watch, learn, and get inspired by our gym sessions and workouts.
@@ -35,7 +35,7 @@ export default function GalleryPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: index * 0.2 }}
-                className="rounded-2xl overflow-hidden border border-yellow-400/20 bg-zinc-900 shadow-lg"
+                className="rounded-2xl overflow-hidden border border-main/20 bg-zinc-900 shadow-lg"
               >
                 {isVideo ? (
                   <video

@@ -6,7 +6,6 @@ export default function Subscribe() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // later: connect to backend or email service
     console.log("Unsubscribe email:", email);
     setEmail("");
   };
@@ -23,11 +22,9 @@ export default function Subscribe() {
           transition={{ duration: 1.4 }}
           className="text-center mb-12"
         >
-          
           <h2 className="text-4xl md:text-5xl font-extrabold">
-             <span className="text-yellow-400">Subscribe</span>
+            <span style={{ color: "var(--main-color)" }}>Subscribe</span>
           </h2>
-         
         </motion.div>
 
         {/* FORM */}
@@ -37,7 +34,8 @@ export default function Subscribe() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.4, delay: 0.2 }}
-          className="bg-zinc-900 border border-yellow-400/30 rounded-2xl p-8 md:p-10"
+          className="bg-zinc-900 rounded-2xl p-8 md:p-10"
+          style={{ border: "1px solid var(--main-color)" }}
         >
           <div className="flex flex-col md:flex-row gap-4">
             <input
@@ -46,20 +44,22 @@ export default function Subscribe() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
-              className="flex-1 px-5 py-4 rounded-full bg-black border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 transition"
+              className="flex-1 px-5 py-4 rounded-full bg-black border border-gray-700 text-white placeholder-gray-500 focus:outline-none transition"
+              style={{ borderColor: "var(--main-color)" }}
             />
 
             <button
               type="submit"
-              className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-4 rounded-full transition"
+              className="font-semibold px-8 py-4 rounded-full transition"
+              style={{ 
+                backgroundColor: "var(--main-color)",
+                color: "black"
+              }}
             >
               Subscribe
             </button>
           </div>
-
-          
         </motion.form>
-
       </div>
     </section>
   );

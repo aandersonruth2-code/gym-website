@@ -1,3 +1,7 @@
+:root {
+  --main-color: #facc15; /* default yellow */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

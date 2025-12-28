@@ -1,18 +1,14 @@
 import { useState } from "react";
 import { Send, User, Mail, Phone } from "lucide-react";
 import Contact from "../components/Contact";
-import { useEffect } from "react"; // <-- added
+import { useEffect } from "react";
 
 export default function Restricted1() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-  });
 
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
@@ -48,7 +44,6 @@ export default function Restricted1() {
     if (!validateForm()) return;
 
     setLoading(true);
-
     try {
       const dataWithDate = { ...formData, submittedAt: new Date().toISOString() };
 
@@ -73,7 +68,6 @@ export default function Restricted1() {
       console.error(error);
       setMessage("❌ Something went wrong. Try again.");
     }
-
     setLoading(false);
   };
 
@@ -83,23 +77,23 @@ export default function Restricted1() {
         {/* LEFT INFO */}
         <div className="space-y-8">
           <h2 className="text-4xl font-extrabold text-gray-900">
-            Join <span className="text-yellow-500">AZNAK GYM</span>
+            Join <span className="text-[var(--main-color)]">AZNAK GYM</span>
           </h2>
           <p className="text-gray-700">
             Fill out the form to sign up and start your fitness journey today.
           </p>
 
           <div className="space-y-4">
-            <div className="flex items-center gap-3 bg-yellow-100 p-4 rounded-xl">
-              <User className="w-6 h-6 text-yellow-600" />
+            <div className="flex items-center gap-3 bg-[var(--main-color)]/20 p-4 rounded-xl">
+              <User className="w-6 h-6 text-[var(--main-color)]" />
               <span className="text-gray-800 font-medium">Personalized Support</span>
             </div>
-            <div className="flex items-center gap-3 bg-yellow-100 p-4 rounded-xl">
-              <Phone className="w-6 h-6 text-yellow-600" />
+            <div className="flex items-center gap-3 bg-[var(--main-color)]/20 p-4 rounded-xl">
+              <Phone className="w-6 h-6 text-[var(--main-color)]" />
               <span className="text-gray-800 font-medium">24/7 Availability</span>
             </div>
-            <div className="flex items-center gap-3 bg-yellow-100 p-4 rounded-xl">
-              <Mail className="w-6 h-6 text-yellow-600" />
+            <div className="flex items-center gap-3 bg-[var(--main-color)]/20 p-4 rounded-xl">
+              <Mail className="w-6 h-6 text-[var(--main-color)]" />
               <span className="text-gray-800 font-medium">Fast Response</span>
             </div>
           </div>
@@ -128,7 +122,7 @@ export default function Restricted1() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-yellow-500 outline-none"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[var(--main-color)] outline-none"
               />
             </div>
             <div className="relative">
@@ -139,7 +133,7 @@ export default function Restricted1() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-yellow-500 outline-none"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[var(--main-color)] outline-none"
               />
             </div>
             <div className="relative">
@@ -150,14 +144,14 @@ export default function Restricted1() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-yellow-500 outline-none"
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[var(--main-color)] outline-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition"
+              className="w-full bg-[var(--main-color)] hover:bg-opacity-90 text-black font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition"
             >
               <Send className="w-5 h-5" />
               {loading ? "Submitting..." : "Sign Up"}
@@ -165,7 +159,8 @@ export default function Restricted1() {
           </form>
         </div>
       </div>
-      <Contact /> 
+
+      <Contact />
     </div>
   );
 }
