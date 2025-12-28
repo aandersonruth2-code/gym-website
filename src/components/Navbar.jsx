@@ -4,8 +4,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import aznakLogo from "../assets/images/aznak_logo.jpg";
 
-const NAVBAR_HEIGHT = 96; // px
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -20,37 +18,20 @@ export default function Navbar() {
     { name: "Gallery", route: "/gallery" },
   ];
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    const y =
-      el.getBoundingClientRect().top + window.pageYOffset - NAVBAR_HEIGHT;
-
-    window.scrollTo({ top: y, behavior: "smooth" });
-  };
-
   const handleClick = (item) => {
     setOpen(false);
 
-    // PAGE ROUTES
+    // ROUTES
     if (item.route) {
       navigate(item.route);
       return;
     }
 
-    // HOME SECTIONS
+    // HOME SECTIONS (hero / pricing)
     if (item.id) {
-      if (location.pathname !== "/") {
-        navigate("/");
-
-        // wait for home to mount
-        setTimeout(() => {
-          scrollToSection(item.id);
-        }, 300);
-      } else {
-        scrollToSection(item.id);
-      }
+      navigate("/", {
+        state: { scrollTo: item.id },
+      });
     }
   };
 
@@ -62,10 +43,11 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-main/10"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
         {/* LOGO */}
         <div
-          className="flex items-center gap-3 cursor-pointer"
           onClick={() => handleClick({ id: "hero" })}
+          className="flex items-center gap-3 cursor-pointer"
         >
           <img
             src={aznakLogo}
@@ -102,8 +84,8 @@ export default function Navbar() {
 
         {/* MOBILE BUTTON */}
         <button
-          className="md:hidden flex flex-col gap-2"
           onClick={() => setOpen(!open)}
+          className="md:hidden flex flex-col gap-2"
         >
           <span className="w-8 h-[3px] bg-white rounded" />
           <span className="w-8 h-[3px] bg-white rounded" />
