@@ -15,6 +15,7 @@ export default function Navbar() {
     { name: "Services", route: "/services" },
     { name: "Plans", id: "pricing" },
     { name: "Contact", route: "/Restricted1" },
+    { name: "Gallery", route: "/gallery" }
   ];
 
   const handleClick = (item) => {
