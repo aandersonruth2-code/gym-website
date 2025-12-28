@@ -4,6 +4,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import aznakLogo from "../assets/images/aznak_logo.jpg";
 
+const NAVBAR_HEIGHT = 96; // px
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -14,32 +16,40 @@ export default function Navbar() {
     { name: "About", route: "/aboutus" },
     { name: "Services", route: "/services" },
     { name: "Plans", id: "pricing" },
-    { name: "Contact", route: "/Restricted1" },
-    { name: "Gallery", route: "/gallery" }
+    { name: "Contact", route: "/restricted1" },
+    { name: "Gallery", route: "/gallery" },
   ];
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const y =
+      el.getBoundingClientRect().top + window.pageYOffset - NAVBAR_HEIGHT;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
 
   const handleClick = (item) => {
     setOpen(false);
 
-    // PAGE NAVIGATION
+    // PAGE ROUTES
     if (item.route) {
       navigate(item.route);
       return;
     }
 
-    // SCROLL SECTIONS (HOME ONLY)
+    // HOME SECTIONS
     if (item.id) {
       if (location.pathname !== "/") {
         navigate("/");
+
+        // wait for home to mount
         setTimeout(() => {
-          document
-            .getElementById(item.id)
-            ?.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+          scrollToSection(item.id);
+        }, 300);
       } else {
-        document
-          .getElementById(item.id)
-          ?.scrollIntoView({ behavior: "smooth" });
+        scrollToSection(item.id);
       }
     }
   };
@@ -52,7 +62,6 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-main/10"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
         {/* LOGO */}
         <div
           className="flex items-center gap-3 cursor-pointer"
@@ -83,7 +92,6 @@ export default function Navbar() {
             </li>
           ))}
 
-          {/* RESTRICTED */}
           <button
             onClick={() => navigate("/restricted1")}
             className="ml-4 bg-main hover:bg-main/80 text-black px-5 py-2 rounded-full font-bold transition"
@@ -92,7 +100,7 @@ export default function Navbar() {
           </button>
         </ul>
 
-        {/* MOBILE */}
+        {/* MOBILE BUTTON */}
         <button
           className="md:hidden flex flex-col gap-2"
           onClick={() => setOpen(!open)}
@@ -124,7 +132,10 @@ export default function Navbar() {
               ))}
 
               <button
-                onClick={() => navigate("/restricted1")}
+                onClick={() => {
+                  setOpen(false);
+                  navigate("/restricted1");
+                }}
                 className="bg-main text-black py-3 rounded-full font-bold hover:bg-main/80 transition"
               >
                 Sign up
