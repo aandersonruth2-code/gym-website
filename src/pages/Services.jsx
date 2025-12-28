@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import Contact from "../components/Contact";
+import { useEffect } from "react"; // <-- added
 import {
   Dumbbell,
   Users,
@@ -10,6 +12,9 @@ import {
 } from "lucide-react";
 
 export default function Services() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const services = [
     {
       icon: Dumbbell,
@@ -217,6 +222,7 @@ export default function Services() {
           </div>
         </motion.div>
       </section>
+      <Contact /> 
     </div>
   );
 }

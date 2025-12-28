@@ -1,45 +1,14 @@
 import { motion } from "framer-motion";
-
-const plans = [
-  {
-    title: "1 Month",
-    price: "250 MAD",
-    note: "Flexible & Short Term",
-    features: [
-      "Full Gym Access",
-      "Men / Women Schedule",
-      "Locker Room",
-      "Basic Support",
-    ],
-  },
-  {
-    title: "1 Year",
-    price: "2200 MAD",
-    note: "Maximum Results",
-    popular: true,
-    features: [
-      "Unlimited Gym Access",
-      "Men / Women Schedule",
-      "Locker Room",
-      "Personal Coach Guidance",
-      "Nutrition Advice",
-    ],
-  },
-  {
-    title: "6 Months",
-    price: "1200 MAD",
-    note: "Best Value",
-    features: [
-      "Unlimited Gym Access",
-      "Men / Women Schedule",
-      "Locker Room",
-      "Coach Assistance",
-      "Free Fitness Assessment",
-    ],
-  },
-];
+import { pricingData } from "../data/pricingdata";
+import { useNavigate } from "react-router-dom";
 
 export default function Pricing() {
+  const navigate = useNavigate();
+
+  const handleSignup = (planTitle) => {
+    navigate(`/restricted1?offer=${encodeURIComponent(planTitle)}`);
+  };
+
   return (
     <section id="pricing" className="bg-black text-white py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -53,20 +22,22 @@ export default function Pricing() {
           className="text-center mb-16"
         >
           <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
-            Membership Plans
+            {pricingData.title.small}
           </h4>
+
           <h2 className="text-4xl md:text-5xl font-extrabold">
             Choose Your <span className="text-yellow-400">Duration</span>
           </h2>
+
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
-            Simple and transparent pricing with no hidden fees.
+            {pricingData.title.description}
           </p>
         </motion.div>
 
         {/* PRICING CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-          {plans.map((plan, index) => (
+          {pricingData.plans.map((plan, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
@@ -77,7 +48,7 @@ export default function Pricing() {
                 ${plan.popular ? "border-yellow-400" : "border-yellow-400/20"}
               `}
             >
-              {/* POPULAR BADGE */}
+              {/* MOST POPULAR */}
               {plan.popular && (
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black text-sm font-semibold px-4 py-1 rounded-full">
                   Most Popular
@@ -98,7 +69,7 @@ export default function Pricing() {
                 </span>
               </div>
 
-              <ul className="space-y-3 text-gray-400 text-sm">
+              <ul className="space-y-3 text-gray-400 text-sm mb-8">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span className="text-yellow-400">✔</span>
@@ -106,11 +77,26 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
+
+              {/* SIGN UP BUTTON */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleSignup(plan.title)}
+                className={`w-full py-3 rounded-xl font-extrabold transition
+                  ${
+                    plan.popular
+                      ? "bg-yellow-400 text-black hover:bg-yellow-300"
+                      : "border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black"
+                  }
+                `}
+              >
+                Sign Up
+              </motion.button>
             </motion.div>
           ))}
 
         </div>
-
       </div>
     </section>
   );

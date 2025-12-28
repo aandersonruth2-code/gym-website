@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Target, Eye, Award, Users, Dumbbell, Heart } from "lucide-react";
 import Coaches from "../components/Coaches";
+import Contact from "../components/Contact";
+import { useEffect } from "react"; // <-- added
 
 /* animation presets */
 const fadeUp = {
@@ -9,6 +11,9 @@ const fadeUp = {
 };
 
 export default function About() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const facilities = [
     { icon: Dumbbell, title: "Premium Equipment", description: "Modern machines & free weights" },
     { icon: Users, title: "Group Classes", description: "Motivating group sessions" },
@@ -158,7 +163,7 @@ export default function About() {
       >
         
           <Coaches />
-        
+          <Contact />
       </motion.section>
 
     </div>

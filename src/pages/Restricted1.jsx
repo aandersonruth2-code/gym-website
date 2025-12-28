@@ -1,13 +1,18 @@
-import { useState } from "react"; 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { Send, User, Mail, Phone } from "lucide-react";
+import Contact from "../components/Contact";
+import { useEffect } from "react"; // <-- added
 
 export default function Restricted1() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    offer: "",
   });
+
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
@@ -26,15 +31,11 @@ export default function Restricted1() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!phoneRegex.test(formData.phone)) {
-      setMessage("❌ Phone must have exactly 10 digits");
+      setMessage("❌ Phone number must have exactly 10 digits");
       return false;
     }
     if (!emailRegex.test(formData.email)) {
       setMessage("❌ Invalid email");
-      return false;
-    }
-    if (!formData.offer) {
-      setMessage("❌ Please select an offer");
       return false;
     }
     return true;
@@ -47,8 +48,10 @@ export default function Restricted1() {
     if (!validateForm()) return;
 
     setLoading(true);
+
     try {
       const dataWithDate = { ...formData, submittedAt: new Date().toISOString() };
+
       await fetch(
         "https://script.google.com/macros/s/AKfycbyHfDFejG9MOxl9dg91zXvU3QeAAlgDpmX2ucgo9NX_ULSKbXnmUY86sePs_1js7421/exec",
         {
@@ -61,104 +64,108 @@ export default function Restricted1() {
 
       setSuccess(true);
       setMessage("✔ Your request has been submitted successfully!");
-      setFormData({ name: "", phone: "", email: "", offer: "" });
+      setFormData({ name: "", phone: "", email: "" });
 
       setTimeout(() => {
         window.location.href = "/";
       }, 3000);
     } catch (error) {
       console.error(error);
-      setMessage("❌ An error occurred. Please try again.");
+      setMessage("❌ Something went wrong. Try again.");
     }
+
     setLoading(false);
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 md:px-12 pt-32 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-gray-100 flex items-start justify-center pt-32 px-4">
+      <div className="max-w-3xl w-full grid md:grid-cols-2 gap-12">
+        {/* LEFT INFO */}
+        <div className="space-y-8">
+          <h2 className="text-4xl font-extrabold text-gray-900">
+            Join <span className="text-yellow-500">AZNAK GYM</span>
+          </h2>
+          <p className="text-gray-700">
+            Fill out the form to sign up and start your fitness journey today.
+          </p>
 
-      {/* Ambient yellow glow */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-yellow-400/20 blur-[140px] rounded-full" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-yellow-400/20 blur-[140px] rounded-full" />
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 bg-yellow-100 p-4 rounded-xl">
+              <User className="w-6 h-6 text-yellow-600" />
+              <span className="text-gray-800 font-medium">Personalized Support</span>
+            </div>
+            <div className="flex items-center gap-3 bg-yellow-100 p-4 rounded-xl">
+              <Phone className="w-6 h-6 text-yellow-600" />
+              <span className="text-gray-800 font-medium">24/7 Availability</span>
+            </div>
+            <div className="flex items-center gap-3 bg-yellow-100 p-4 rounded-xl">
+              <Mail className="w-6 h-6 text-yellow-600" />
+              <span className="text-gray-800 font-medium">Fast Response</span>
+            </div>
+          </div>
+        </div>
 
-      <motion.form
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 w-full max-w-xl bg-gray-900 bg-opacity-90 p-10 md:p-12 rounded-3xl shadow-2xl space-y-6"
-      >
+        {/* RIGHT FORM */}
+        <div className="bg-white p-8 rounded-3xl shadow-2xl">
+          {success && (
+            <div className="bg-green-100 text-green-900 p-4 rounded-lg mb-6 text-center font-semibold">
+              {message} Redirecting...
+            </div>
+          )}
 
-        {success && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="bg-yellow-400 text-black p-4 rounded-lg text-center font-bold mb-4 shadow-lg"
-          >
-            ✔ Form submitted successfully!<br />
-            Redirecting to homepage...
-          </motion.div>
-        )}
+          {!success && message && (
+            <div className="bg-red-100 text-red-900 p-4 rounded-lg mb-6 text-center font-semibold">
+              {message}
+            </div>
+          )}
 
-        <h2 className="text-2xl md:text-3xl font-extrabold text-yellow-400 text-center mb-6">
-          Sign Up for Coaching
-        </h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="relative">
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-yellow-500 outline-none"
+              />
+            </div>
+            <div className="relative">
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-yellow-500 outline-none"
+              />
+            </div>
+            <div className="relative">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-yellow-500 outline-none"
+              />
+            </div>
 
-        <select
-          name="offer"
-          value={formData.offer}
-          onChange={handleChange}
-          className="w-full p-4 rounded-xl bg-black border border-gray-700 focus:border-yellow-400 outline-none text-white shadow-inner"
-          required
-        >
-          <option value="">-- Select an offer --</option>
-          <option value="Basic Coaching">Basic Coaching</option>
-          <option value="Advanced Coaching">Advanced Coaching</option>
-          <option value="Full Transformation">Full Transformation</option>
-        </select>
-
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full p-4 rounded-xl bg-black border border-gray-700 focus:border-yellow-400 outline-none text-white shadow-inner"
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone (10 digits)"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full p-4 rounded-xl bg-black border border-gray-700 focus:border-yellow-400 outline-none text-white shadow-inner"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-4 rounded-xl bg-black border border-gray-700 focus:border-yellow-400 outline-none text-white shadow-inner"
-          required
-        />
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-yellow-400 text-black font-bold py-4 rounded-xl hover:bg-yellow-500 transition text-lg"
-        >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
-
-        {message && !success && (
-          <p className="mt-2 text-center font-medium text-red-500">{message}</p>
-        )}
-      </motion.form>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition"
+            >
+              <Send className="w-5 h-5" />
+              {loading ? "Submitting..." : "Sign Up"}
+            </button>
+          </form>
+        </div>
+      </div>
+      <Contact /> 
     </div>
-
-    
   );
 }

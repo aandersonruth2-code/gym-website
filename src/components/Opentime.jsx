@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { openTimeData } from "../data/opentimedata";
 
 export default function GymSchedule() {
   return (
@@ -14,13 +15,15 @@ export default function GymSchedule() {
           className="text-center mb-14"
         >
           <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
-            Gym Timing
+            {openTimeData.title.small}
           </h4>
+
           <h2 className="text-4xl md:text-5xl font-extrabold">
             Opening <span className="text-yellow-400">Schedule</span>
           </h2>
+
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
-            Dedicated training days to ensure comfort and focus for everyone.
+            {openTimeData.title.description}
           </p>
         </motion.div>
 
@@ -36,28 +39,23 @@ export default function GymSchedule() {
             className="bg-zinc-900 border border-yellow-400/30 rounded-2xl p-8"
           >
             <h3 className="text-2xl font-bold mb-4 text-yellow-400">
-              Men Training
+              {openTimeData.men.label}
             </h3>
 
-            <p className="text-gray-300 mb-6">4 Days Per Week</p>
+            <p className="text-gray-300 mb-6">
+              {openTimeData.men.daysCount}
+            </p>
 
             <ul className="space-y-3 text-gray-400">
-              <li className="flex justify-between border-b border-gray-700 pb-2">
-                <span>Monday</span>
-                <span>6:00 AM – 10:00 PM</span>
-              </li>
-              <li className="flex justify-between border-b border-gray-700 pb-2">
-                <span>Tuesday</span>
-                <span>6:00 AM – 10:00 PM</span>
-              </li>
-              <li className="flex justify-between border-b border-gray-700 pb-2">
-                <span>Thursday</span>
-                <span>6:00 AM – 10:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Saturday</span>
-                <span>6:00 AM – 10:00 PM</span>
-              </li>
+              {openTimeData.men.days.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex justify-between border-b border-gray-700 pb-2 last:border-none"
+                >
+                  <span>{item.day}</span>
+                  <span>{item.time}</span>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
@@ -70,29 +68,27 @@ export default function GymSchedule() {
             className="bg-zinc-900 border border-yellow-400/30 rounded-2xl p-8"
           >
             <h3 className="text-2xl font-bold mb-4 text-yellow-400">
-              Women Training
+              {openTimeData.women.label}
             </h3>
 
-            <p className="text-gray-300 mb-6">3 Days Per Week</p>
+            <p className="text-gray-300 mb-6">
+              {openTimeData.women.daysCount}
+            </p>
 
             <ul className="space-y-3 text-gray-400">
-              <li className="flex justify-between border-b border-gray-700 pb-2">
-                <span>Wednesday</span>
-                <span>6:00 AM – 10:00 PM</span>
-              </li>
-              <li className="flex justify-between border-b border-gray-700 pb-2">
-                <span>Friday</span>
-                <span>6:00 AM – 10:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday</span>
-                <span>6:00 AM – 10:00 PM</span>
-              </li>
+              {openTimeData.women.days.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex justify-between border-b border-gray-700 pb-2 last:border-none"
+                >
+                  <span>{item.day}</span>
+                  <span>{item.time}</span>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
         </div>
-
       </div>
     </section>
   );

@@ -1,30 +1,5 @@
 import { motion } from "framer-motion";
-
-// Replace images with your real coach photos
-import coach1 from "../assets/images/FM.jpg";
-import coach2 from "../assets/images/FM.jpg";
-import coach3 from "../assets/images/FM.jpg";
-
-const coaches = [
-  {
-    name: "Ahmed Benali",
-    role: "Strength Coach",
-    image: coach1,
-    experience: "8+ Years Experience",
-  },
-  {
-    name: "Sara El Amrani",
-    role: "Fitness Trainer",
-    image: coach2,
-    experience: "6+ Years Experience",
-  },
-  {
-    name: "Youssef Ait Ali",
-    role: "Bodybuilding Coach",
-    image: coach3,
-    experience: "10+ Years Experience",
-  },
-];
+import { coachesData } from "../data/coachesData";
 
 export default function Coaches() {
   return (
@@ -40,36 +15,38 @@ export default function Coaches() {
           className="text-center mb-16"
         >
           <h4 className="text-yellow-400 uppercase tracking-widest font-semibold mb-3">
-            Our Coaches
+            {coachesData.title.small}
           </h4>
+
           <h2 className="text-4xl md:text-5xl font-extrabold">
             Meet Our <span className="text-yellow-400">Professional Team</span>
           </h2>
+
           <p className="text-gray-400 mt-4 max-w-xl mx-auto">
-            Certified trainers dedicated to helping you reach your fitness goals.
+            {coachesData.title.description}
           </p>
         </motion.div>
 
         {/* COACHES GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-          {coaches.map((coach, index) => (
+          {coachesData.coaches.map((coach, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, delay: index * 0.2 }}
-              className="bg-zinc-900 rounded-2xl overflow-hidden border border-yellow-400/20 hover:border-yellow-400 transition"
+              className="group bg-zinc-900 rounded-2xl overflow-hidden border border-yellow-400/20 hover:border-yellow-400 transition"
             >
               {/* IMAGE */}
-              <div className="relative group">
+              <div className="relative">
                 <img
                   src={coach.image}
                   alt={coach.name}
                   className="w-full h-[320px] object-cover grayscale group-hover:grayscale-0 transition duration-500"
                 />
-                <div className="absolute inset-0 bg-black/30"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
               </div>
 
               {/* CONTENT */}
@@ -77,9 +54,11 @@ export default function Coaches() {
                 <h3 className="text-xl font-bold mb-1">
                   {coach.name}
                 </h3>
+
                 <p className="text-yellow-400 font-semibold mb-2">
                   {coach.role}
                 </p>
+
                 <p className="text-gray-400 text-sm">
                   {coach.experience}
                 </p>
@@ -88,7 +67,6 @@ export default function Coaches() {
           ))}
 
         </div>
-
       </div>
     </section>
   );
