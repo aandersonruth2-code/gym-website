@@ -93,8 +93,8 @@ export default function About() {
       <section className="py-20 bg-gray-100">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
           {[
-            { icon: Target, title: "Our Mission", text: "..." },
-            { icon: Eye, title: "Our Vision", text: "..." }
+            { icon: Target, title: "Our Mission", text: "To empower individuals to transform their lives through fitness by providing world-class facilities, expert guidance, and a supportive community. We believe that everyone deserves access to premium fitness experiences that inspire lasting change." },
+            { icon: Eye, title: "Our Vision", text: "To be Morocco's leading fitness destination, recognized for our innovative approach to health and wellness. We aspire to create a movement where fitness is not just a routine, but a lifestyle that brings joy, confidence, and vitality to our members." }
           ].map((item, i) => (
             <motion.div
               key={i}

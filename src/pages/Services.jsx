@@ -3,8 +3,11 @@ import Contact from "../components/Contact";
 import { useEffect } from "react";
 import { CheckCircle } from "lucide-react";
 import servicesData from "../data/servicesData";
+import { useNavigate } from "react-router-dom";
 
 export default function Services() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -60,7 +63,9 @@ export default function Services() {
                   {service.title}
                 </h2>
 
-                <p className="text-gray-300 text-lg mb-8">{service.description}</p>
+                <p className="text-gray-300 text-lg mb-8">
+                  {service.description}
+                </p>
 
                 <ul className="space-y-4">
                   {service.features.map((feature, i) => (
@@ -73,7 +78,11 @@ export default function Services() {
               </div>
 
               {/* IMAGE */}
-              <div className={`relative h-[460px] rounded-2xl overflow-hidden shadow-2xl ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"}`}>
+              <div
+                className={`relative h-[460px] rounded-2xl overflow-hidden shadow-2xl ${
+                  index % 2 === 0 ? "lg:order-2" : "lg:order-1"
+                }`}
+              >
                 <img
                   src={service.image}
                   alt={service.title}
@@ -95,7 +104,8 @@ export default function Services() {
           className="max-w-4xl mx-auto text-center px-6"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Ready to Get <span className="text-[var(--main-color)]">Started</span>?
+            Ready to Get{" "}
+            <span className="text-[var(--main-color)]">Started</span>?
           </h2>
 
           <p className="text-gray-300 text-lg mb-10">
@@ -103,19 +113,23 @@ export default function Services() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#pricing"
+            {/* GO TO PRICING SECTION */}
+            <button
+              onClick={() =>
+                navigate("/", { state: { scrollTo: "pricing" } })
+              }
               className="bg-[var(--main-color)] hover:bg-opacity-90 text-black px-8 py-4 rounded-full font-bold transition"
             >
               View Membership Plans
-            </a>
+            </button>
 
-            <a
-              href="#contact"
+            {/* GO TO RESTRICTED PAGE */}
+            <button
+              onClick={() => navigate("/restricted1")}
               className="border border-white text-white hover:bg-white hover:text-black px-8 py-4 rounded-full font-bold transition"
             >
               Contact Us
-            </a>
+            </button>
           </div>
         </motion.div>
       </section>
