@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Hide all profile photos inside the widget */
+.google-reviews-widget img {
+  display: none !important;
+}

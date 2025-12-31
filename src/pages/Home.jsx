@@ -9,6 +9,7 @@ import Coaches from "../components/Coaches";
 import Map from "../components/Map";
 import Contact from "../components/Contact";
 import Subscribe from "../components/Subscribe";
+import Rviewes from "../components/Rviewes";
 
 const NAVBAR_HEIGHT = 96; // must match navbar height
 
@@ -48,6 +49,7 @@ export default function Home() {
 
       <Aboutus />
       <Coaches />
+      <Rviewes />
       <Map />
       <Contact />
       <Subscribe />

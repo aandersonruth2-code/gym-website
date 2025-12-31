@@ -10,3 +10,46 @@
 /* :root {
   --main-color: #facc15;  default yellow 
 }*/
+/* ===============================
+   GOOGLE REVIEWS FIX
+   =============================== */
+
+/* Hide broken Google profile images */
+.google-reviews-wrapper img {
+  display: none !important;
+}
+
+/* Fake clean avatar */
+.google-review-avatar,
+.google-review-avatar::before {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background-color: #2563eb; /* Tailwind blue-600 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Improve review card look */
+.google-review {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Review author */
+.google-review-author {
+  font-weight: 600;
+  color: #111827; /* gray-900 */
+}
+
+/* Review text */
+.google-review-text {
+  color: #374151; /* gray-700 */
+  margin-top: 8px;
+}
